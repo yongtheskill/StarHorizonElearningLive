@@ -9,14 +9,14 @@ ARG BASE_HREF=/
 RUN apk add wget unzip
 
 # Download openvidu-call from specific branch (master by default), intall openvidu-browser and build for production
-RUN wget "https://github.com/OpenVidu/openvidu-call/archive/${BRANCH_NAME}.zip" -O openvidu-call.zip && \
+RUN wget "https://github.com/yongtheskill/StarHorizonElearningLive/archive/${BRANCH_NAME}.zip" -O openvidu-call.zip && \
     unzip openvidu-call.zip && \
     rm openvidu-call.zip && \
-    mv openvidu-call-${BRANCH_NAME}/openvidu-call-front/ . && \
-    mv openvidu-call-${BRANCH_NAME}/openvidu-call-back/ . && \
+    mv StarHorizonElearningLive-${BRANCH_NAME}/openvidu-call-front/ . && \
+    mv StarHorizonElearningLive-${BRANCH_NAME}/openvidu-call-back/ . && \
     rm openvidu-call-front/package-lock.json && \
     rm openvidu-call-back/package-lock.json && \
-    rm -rf openvidu-call-${BRANCH_NAME} && \
+    rm -rf StarHorizonElearningLive-${BRANCH_NAME} && \
     # Install openvidu-call-front dependencies and build it for production
     npm i --prefix openvidu-call-front && \
     npm run build-prod ${BASE_HREF} --prefix openvidu-call-front && \

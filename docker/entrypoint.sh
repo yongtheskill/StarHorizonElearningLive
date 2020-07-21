@@ -11,5 +11,7 @@ OPENVIDU_SECRET=${OPENVIDU_SECRET}
 CALL_OPENVIDU_CERTTYPE=${CALL_OPENVIDU_CERTTYPE}
 EOF
 
+echo "___________________________________________updated___________________________________________"
+
 cd /opt/openvidu-call
 nodemon openvidu-call-server.js
