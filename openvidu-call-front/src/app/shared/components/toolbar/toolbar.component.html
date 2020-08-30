@@ -65,6 +65,13 @@
 		</div>
 	</div>
 	<div fxFlex="10%" fxFlexOrder="3" align="end">
+		<button mat-icon-button onclick="window.location.replace('https://gotutor.sg/live/exitStream');" >
+			<mat-icon
+				matTooltip="Leave"
+				color="warn"
+				>exit_to_app</mat-icon
+			>
+		</button>
 		<button mat-icon-button (click)="toggleChat()" [disabled]="isConnectionLost" *ngIf="ovSettings | hasChat">
 			<mat-icon
 				matBadge="{{ newMessagesNum }}"
