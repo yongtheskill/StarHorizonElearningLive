@@ -62,6 +62,17 @@
 				<mat-icon matTooltip="Enable speaker layout" color="warn" *ngIf="!isAutoLayout">voice_over_off</mat-icon>
 				<mat-icon matTooltip="Disable speaker layout" *ngIf="isAutoLayout">record_voice_over</mat-icon>
 			</button>
+
+			<!-- whiteboard button -->
+		<button
+			*ngIf="isTeacher"
+			id="navScreenButton"
+			mat-icon-button
+			(click)="openWhiteboard()"
+			[disabled]="isConnectionLost"
+		>
+			<mat-icon matTooltip="Open whiteboard">aspect_ratio</mat-icon>
+		</button>
 		</div>
 	</div>
 	<div fxFlex="10%" fxFlexOrder="3" align="end">

@@ -4,6 +4,8 @@ import { VideoFullscreenIcon } from '../../types/icon-type';
 import { OvSettingsModel } from '../../models/ovSettings';
 import { ChatService } from '../../services/chat/chat.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+//Add this
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-toolbar',
@@ -32,13 +34,19 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
 	newMessagesNum: number;
 	private chatServiceSubscription: Subscription;
+	//Add this
+	username: string;
+	isTeacher: boolean;
 
 	fullscreenIcon = VideoFullscreenIcon.BIG;
 	logoUrl = 'https://raw.githubusercontent.com/OpenVidu/openvidu-call/master/openvidu-call-front/src/assets/images/';
 
 	participantsNames: string[] = [];
 
-	constructor(private utilsSrv: UtilsService, private chatService: ChatService) {
+	constructor(private utilsSrv: UtilsService, private chatService: ChatService
+		//Add this
+		, private route: ActivatedRoute
+		) {
 		this.chatServiceSubscription = this.chatService.messagesUnreadObs.subscribe((num) => {
 			this.newMessagesNum = num;
 		});
@@ -64,6 +72,15 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 			return;
 		}
 		this.logoUrl += 'openvidu_logo.png';
+		
+		//Add this
+		this.username = this.route.snapshot.queryParamMap.get('usr');
+		if (this.route.snapshot.queryParamMap.get('tchr') === "true"){
+			this.isTeacher = true;
+		}
+		else{
+			this.isTeacher = false;
+		}
 	}
 
 	toggleMicrophone() {
@@ -74,7 +91,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 		this.camButtonClicked.emit();
 	}
 
-	toggleScreenShare() {
+	openWhiteboard(){
+		window.open("https://gotutor.sg/whiteboard");
 		this.screenShareClicked.emit();
 	}
 

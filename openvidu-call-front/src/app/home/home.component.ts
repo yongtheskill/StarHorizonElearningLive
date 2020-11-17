@@ -19,11 +19,7 @@ export class HomeComponent implements OnInit {
 		this.roomForm = new FormControl(randomName, [Validators.minLength(4), Validators.required]);
 	}
 
-	public goToVideoCall() {
-		if (this.roomForm.valid) {
-			const roomName = this.roomForm.value.replace(/ /g, '-'); // replace white spaces by -
-			this.roomForm.setValue(roomName);
-			this.router.navigate(['/', roomName]);
-		}
+	rejoinStream() {
+		location.reload();
 	}
 }

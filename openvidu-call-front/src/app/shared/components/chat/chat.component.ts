@@ -2,6 +2,9 @@ import { Component, ElementRef, Input, OnInit, ViewChild, HostListener, OnDestro
 import { ChatService } from '../../services/chat/chat.service';
 import { ChatMessage } from '../../types/chat-type';
 import { Subscription } from 'rxjs/internal/Subscription';
+//Add this
+import { ActivatedRoute } from '@angular/router';
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
 	selector: 'chat-component',
@@ -18,11 +21,16 @@ export class ChatComponent implements OnInit, OnDestroy {
 
 	messageList: ChatMessage[] = [];
 	chatOpened: boolean;
+	username: string;
+	isTeacher: boolean;
 
 	private chatMessageSubscription: Subscription;
 	private chatToggleSubscription: Subscription;
 
-	constructor(private chatService: ChatService) {}
+	constructor(private chatService: ChatService
+		//Add this
+		, private route: ActivatedRoute
+		) {}
 
 	@HostListener('document:keydown.escape', ['$event'])
 	onKeydownHandler(event: KeyboardEvent) {
@@ -35,6 +43,14 @@ export class ChatComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.subscribeToMessages();
 		this.subscribeToToggleChat();
+		//Add this
+		this.username = this.route.snapshot.queryParamMap.get('usr');
+		if (this.route.snapshot.queryParamMap.get('tchr') === "true"){
+			this.isTeacher = true;
+		}
+		else{
+			this.isTeacher = false;
+		}
 	}
 
 	ngOnDestroy(): void {
@@ -56,6 +72,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 	sendMessage(): void {
 		this.chatService.sendMessage(this.message);
 		this.message = '';
+	}
+
+	raiseHand(): void {
+		this.chatService.sendMessage(this.username + " raised their hand");
 	}
 
 	scrollToBottom(): void {

@@ -29,8 +29,15 @@
 				[(ngModel)]="message"
 				id="chatInput"
 			/>
-			<button mat-mini-fab id="sendButton" (click)="sendMessage()">
+			<button mat-mini-fab id="sendButtont" (click)="sendMessage()"*ngIf="isTeacher">
 				<mat-icon matTooltip="Send">send</mat-icon>
+			</button>
+
+			<button mat-mini-fab id="sendButton" (click)="sendMessage()"*ngIf="!isTeacher">
+				<mat-icon matTooltip="Send">send</mat-icon>
+			</button>
+			<button mat-mini-fab id="raiseHand" (click)="raiseHand()" *ngIf="!isTeacher">
+				<mat-icon matTooltip="Raise Hand">pan_tool</mat-icon>
 			</button>
 		</div>
 	</div>
