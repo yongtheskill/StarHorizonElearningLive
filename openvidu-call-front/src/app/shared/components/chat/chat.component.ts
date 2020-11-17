@@ -21,6 +21,8 @@ export class ChatComponent implements OnInit, OnDestroy {
 
 	messageList: ChatMessage[] = [];
 	chatOpened: boolean;
+
+	//Add this
 	username: string;
 	isTeacher: boolean;
 
