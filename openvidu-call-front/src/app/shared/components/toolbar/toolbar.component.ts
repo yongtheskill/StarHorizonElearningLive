@@ -92,7 +92,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	}
 
 	openWhiteboard(){
-		window.open("https://gotutor.sg/whiteboard");
+		window.open("https://r7.whiteboardfox.com/");
 		this.screenShareClicked.emit();
 	}
 
