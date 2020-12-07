@@ -77,7 +77,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 	}
 
 	raiseHand(): void {
-		this.chatService.sendMessage("&#9995;");
+		this.chatService.sendMessage("✋");
 	}
 
 	scrollToBottom(): void {
