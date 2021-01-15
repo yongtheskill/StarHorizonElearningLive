@@ -3,3 +3,14 @@
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/orion.svg)](https://hub.docker.com/r/openvidu/openvidu-call/)
 [![Support badge](https://img.shields.io/badge/support-sof-yellowgreen.svg)](https://openvidu.discourse.group/)
 
+
+cd openvidu-call-front
+npx ng serve --open
+
+docker build -f docker/custom.dockerfile -t yongtheskill/shelearninglive:1.12 .
+
+
+cd /opt/openvidu
+./openvidu stop
+sudo nano docker-compose.override.yml
+./openvidu start

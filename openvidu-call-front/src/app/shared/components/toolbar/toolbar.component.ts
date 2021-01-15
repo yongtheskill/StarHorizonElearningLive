@@ -91,9 +91,12 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 		this.camButtonClicked.emit();
 	}
 
+	toggleScreenShare(){
+		this.screenShareClicked.emit();
+	}
+
 	openWhiteboard(){
 		window.open("https://r7.whiteboardfox.com/");
-		this.screenShareClicked.emit();
 	}
 
 	toggleSpeakerLayout() {
